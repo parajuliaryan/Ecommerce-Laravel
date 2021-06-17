@@ -27,7 +27,9 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/admin', [HomeController::class, 'admin'])->name('admin')->middleware('is_admin');
-    Route::post('/edit/{id}', [ProductController::class, 'update'])->name('update')->middleware('is_admin');
-    Route::get('/edit/{id}', [ProductController::class, 'delete'])->name('delete')->middleware('is_admin');
+    Route::get('/edit/{id}', [ProductController::class, 'edit_page'])->name('edit.page')->middleware('is_admin');
+    Route::post('/edit', [ProductController::class, 'edit'])->name('edit')->middleware('is_admin');
+    Route::put('/electronic-devices/{id}', [ProductController::class, 'update'])->name('update')->middleware('is_admin');
+    Route::get('/electronic-devices/{id}', [ProductController::class, 'destroy'])->name('destroy')->middleware('is_admin');
     Route::post('/electronic-devices', [ProductController::class, 'store'])->name('store')->middleware('is_admin');
 });

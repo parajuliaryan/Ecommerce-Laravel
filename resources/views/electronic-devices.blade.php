@@ -48,10 +48,11 @@
             @foreach ($products as $product)
             <div class="product">
                 <img
-                    src="{{ $product->image_path }}"
+                    src="{{ asset('images/'. $product->image_path ) }}"
                 />
                 <h4>{{ $product->product_name }}</h4>
                 <form method="POST">
+                    @csrf
                     <button class="cart-btn" type="submit">Add to cart</button>
                 </form>
                 <hr />

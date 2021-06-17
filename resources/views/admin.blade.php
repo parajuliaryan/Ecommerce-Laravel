@@ -77,15 +77,11 @@
                 <input type="text" name="price" placeholder="Enter the price"><br>
                 <button class="btn btn-success mt-3 mb-3">Add</button>
               </form>
-              <form method="GET" action="/edit">
-                  <h4>Delete Product:</h4>
-                  <input class="mb-2" type="text" name="product_id" placeholder="Enter product ID for delete"><br>
-                  <button class="btn btn-danger mb-3" type="submit">Delete</button>
-              </form>
               <form method="POST" action="/edit">
-                  <h4>Update Product:</h4>
-                  <input class="mb-2" type="text" name="product_id" placeholder="Enter product ID for update"><br>
-                  <button class="btn btn-primary" type="submit">Update</button>
+                @csrf
+                  <h4>Edit Product:</h4>
+                  <input class="mb-2" type="text" name="product_id" placeholder="Enter product ID for editing"><br>
+                  <button class="btn btn-primary" type="submit">Edit</button>
               </form>
         </div>
 </body>

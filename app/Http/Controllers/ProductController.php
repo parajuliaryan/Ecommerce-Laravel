@@ -41,10 +41,12 @@ class ProductController extends Controller
             'photo'=>'required',
             'price'=>'required',
         ]);
-        $request->photo->move(public_path('images'));
+
+        $imageName = time().'.'.$request->photo->extension();  
+        $request->photo->move(public_path('images'), $imageName);
         Products::create([
             'product_name'=> $request->input('product_name'),
-            'image_path'=> $request->input('photo'),
+            'image_path'=> $imageName,
             'price'=> $request->input('price'),
         ]);
 
@@ -67,11 +69,26 @@ class ProductController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $id = $request->product_id;
+        return redirect()->route('edit.page',$id);
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function edit_page( $id)
+    {
+      return view('edit',compact('id'));
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -80,9 +97,22 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Products $id)
     {
-        //
+
+        request()->validate([
+            'product_name'=>'required',
+            'photo'=>'required',
+            'price'=>'required',
+        ]);
+
+        $imageName = time().'.'.request()->photo->extension();  
+        request()->photo->move(public_path('images'), $imageName);
+        $id->update([
+            'product_name'=> request('product_name'),
+            'image_path'=> $imageName,
+            'price'=> request('price'),
+        ]);
     }
 
     /**
@@ -91,8 +121,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Products $id)
     {
-        //
+        $id->delete();
+
+        return redirect ('/electronic-devices');
     }
 }
