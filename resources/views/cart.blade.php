@@ -26,19 +26,21 @@
 
                 <div class="col-sm-5">
                     <div class="container mb-4 box-shadow">
+                       
                         <div class="row">
                             <div class="col-sm-4">
                                 <img
                                     class="image"
-                                    src="https://i.gadgets360cdn.com/products/large/1548680882_635_samsung_galaxy_m10.jpg"
+                                    src="{{ asset('images/'. $product->image_path ) }}"
                                 />
                             </div>
                             <div class="col-sm-8">
-                                <h4>Samsung</h4>
-                                <p>Price: 20k</p>
+                                <h4>{{ $product->name }}</h4>
+                                <p>Price: {{ $product->price }}</p>
                                 <button class="btn btn-danger">Delete</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 

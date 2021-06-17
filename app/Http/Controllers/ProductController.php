@@ -127,4 +127,13 @@ class ProductController extends Controller
 
         return redirect ('/electronic-devices');
     }
+
+    public function cart(){
+        return view('cart');
+    }
+    
+    public function addToCart($id){
+        $product=Products::find($id);
+        return view('cart',compact('product')); 
+    }
 }

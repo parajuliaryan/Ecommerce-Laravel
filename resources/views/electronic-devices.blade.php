@@ -51,7 +51,9 @@
                     src="{{ asset('images/'. $product->image_path ) }}"
                 />
                 <h4>{{ $product->product_name }}</h4>
-                <form method="POST">
+                <h4>{{ $product->price }}</h4>
+                {{-- route(name,id) --}}
+                <form method="POST" action="{{ route('add-to-cart',$product->id) }}">
                     @csrf
                     <button class="cart-btn" type="submit">Add to cart</button>
                 </form>

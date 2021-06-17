@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Middleware\isAdmin;
@@ -25,7 +24,8 @@ Route::get('/electronic-devices',[ProductController::class,'index']);
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/cart', [CartController::class, 'index'])->name('cart');
+    Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
+    Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add-to-cart');
     Route::get('/admin', [HomeController::class, 'admin'])->name('admin')->middleware('is_admin');
     Route::get('/edit/{id}', [ProductController::class, 'edit_page'])->name('edit.page')->middleware('is_admin');
     Route::post('/edit', [ProductController::class, 'edit'])->name('edit')->middleware('is_admin');
