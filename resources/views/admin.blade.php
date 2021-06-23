@@ -9,9 +9,14 @@
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   <style>
     .container{
-      max-width: 768px;
+      max-width: 992px;
       width: 100%;
       margin: 10px auto;
+      background: #ffffffda;
+      border-radius: 15px;
+    }
+    body{
+        background: linear-gradient(to right, #fc9403 0%, #9a8d92 100%);
     }
   </style>
 </head>
@@ -64,24 +69,24 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endguest 
                 </ul>
             </div>
         </nav>
-        <div class="container">
-              <h4>Add product:</h4>
+        <div class="container p-4">
+              <h4 class="mt-3">Add a product:</h4>
               <form method="POST" action="/electronic-devices" enctype="multipart/form-data">
                 @csrf
-                <input type="text" name="product_name" placeholder="Enter the product name">
-                <input type="file" name="photo"> <br>
-                <input type="text" name="price" placeholder="Enter the price"><br>
-                <button class="btn btn-success mt-3 mb-3">Add</button>
+                <input type="text" name="product_name" placeholder="Enter the product name" class="form-control mb-3">
+                <input type="file" name="photo" class="form-control-file mb-3 btn btn-success"> 
+                <input type="text" name="price" placeholder="Enter the price" class="form-control mb-3">
+                <button class="btn btn-success mb-3">Add</button>
               </form>
               <form method="POST" action="/edit">
                 @csrf
                   <h4>Edit Product:</h4>
-                  <input class="mb-2" type="text" name="product_id" placeholder="Enter product ID for editing"><br>
-                  <button class="btn btn-primary" type="submit">Edit</button>
+                  <input class="form-control mb-3" type="text" name="product_id" placeholder="Enter product ID for editing">
+                  <button class="btn btn-primary mb-3" type="submit">Edit</button>
               </form>
         </div>
 </body>

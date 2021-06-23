@@ -5,57 +5,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Electronic Devices</title>
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <style>
             .container {
                 max-width: 992px;
                 width: 100%;
                 margin: 0 auto;
                 padding: 10px;
+                text-align: center;
             }
-            .product {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            img {
-                height: 280px;
+            img{
+                height: 250px;
                 width: 300px;
                 object-fit: contain;
-                margin: 0 5px;
-                border-radius: 5px;
-            }
-            .cart-btn {
-                height: 50px;
-                width: 150px;
-                background-color: rgb(82, 231, 82);
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                color: white;
-            }
-            .cart-btn:hover {
-                background-color: rgba(10, 131, 10, 0.637);
-                transition: all 0.4s;
-            }
-            hr {
-                width: 100%;
             }
         </style>
     </head>
     <body>
-        <h3>Here are the list of electronic products you can buy:</h3>
         <div class="container">
+            <h3>Here are the list of electronic products you can buy:</h3>
             @foreach ($products as $product)
             <div class="product">
                 <img
                     src="{{ asset('images/'. $product->image_path ) }}"
                 />
-                <h4>{{ $product->product_name }}</h4>
-                <h4>{{ $product->price }}</h4>
+                <h4 class="product-name text-uppercase">Name: {{ $product->product_name }}</h4>
+                <h4 class="product-price">Price: {{ $product->price }}</h4>
                 {{-- route(name,id) --}}
-                <form method="POST" action="{{ route('add-to-cart',$product->id) }}">
+                <form method="GET" action="{{ route('add-to-cart',$product->id) }}">
                     @csrf
-                    <button class="cart-btn" type="submit">Add to cart</button>
+                    <button class="btn btn-success" type="submit">Add to cart</button>
                 </form>
                 <hr />
             </div>

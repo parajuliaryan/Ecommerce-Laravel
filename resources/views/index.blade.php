@@ -53,6 +53,9 @@
                 background-color: orange;
                 color: whitesmoke;
             }
+            .navbar-nav{
+                margin-right: 55px;
+            }
         </style>
     </head>
     <body>
@@ -92,7 +95,7 @@
                             ><i class="bi bi-cart"></i
                         ></a>
                     </li>
-                    <li class="nav-item dropdown dropdown-menu-end">
+                    <li class="nav-item dropdown">
                         <a
                             class="nav-link dropdown-toggle my-auto"
                             href="#"

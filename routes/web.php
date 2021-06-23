@@ -26,6 +26,7 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/cart', [ProductController::class, 'cart'])->name('cart');
     Route::get('/add-to-cart/{id}', [ProductController::class, 'addToCart'])->name('add-to-cart');
+    Route::delete('remove-from-cart/{id}',[ProductController::class,'remove'])->name('remove-from-cart');
     Route::get('/admin', [HomeController::class, 'admin'])->name('admin')->middleware('is_admin');
     Route::get('/edit/{id}', [ProductController::class, 'edit_page'])->name('edit.page')->middleware('is_admin');
     Route::post('/edit', [ProductController::class, 'edit'])->name('edit')->middleware('is_admin');
