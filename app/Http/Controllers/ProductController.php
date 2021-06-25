@@ -176,6 +176,7 @@ class ProductController extends Controller
                 session()->put('cart', $cart);
             }
             session()->flash('success', 'Product removed successfully');
+            return redirect('/cart')->with('success', 'Product removed from cart successfully!');
         }
     }
 

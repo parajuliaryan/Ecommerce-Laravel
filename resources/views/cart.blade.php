@@ -38,7 +38,7 @@
                                         <div class="col-sm-8">
                                             <h4>Name: {{ $details['product_name'] }}</h4>
                                             <p>Price: <span class="itemPrice">{{ $details['price'] }}</span></p>
-                                            <form action = {{ route('remove-from-cart') }}>
+                                            <form action = {{ route('remove-from-cart',$id) }}>
                                               @method('DELETE')
                                               @csrf
                                               <button class="btn btn-danger" type="submit">Delete</button>
